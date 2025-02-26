@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 3146898756832631265}
   - component: {fileID: 685516890715423945}
   - component: {fileID: 5718462760245441872}
-  - component: {fileID: 1064378283624962035}
   - component: {fileID: 535154746701649624}
   m_Layer: 0
   m_Name: PlayerCam
@@ -143,27 +142,6 @@ MonoBehaviour:
   sensX: 400
   sensY: 400
   orientation: {fileID: 3185131267772324451}
---- !u!114 &1064378283624962035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1154422613427130070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee2ce593b70f989488510b12deb4d279, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GrabOrPlaceKey: 323
-  PostItSummonKey: 0
-  enablePostItNotes: 0
-  postItNoteLimit: 5
-  player: {fileID: 1305581347606618042}
-  holdPos: {fileID: 8985498608631128865}
-  postItPrefab: {fileID: 0}
-  pickupUIImage: {fileID: 0}
-  pickUpRange: 5
 --- !u!114 &535154746701649624
 MonoBehaviour:
   m_ObjectHideFlags: 0

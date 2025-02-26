@@ -2,23 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public event Action OnInteractionFinish;
+    public UnityEvent OnInteract;
 
-    public void Interact()
-    {
-        // if able to interact:
-        StartInteraction();
-    }
-    protected virtual void StartInteraction()
-    {
-
-    }
-
-    public void FinishInteraction()
-    {
-        OnInteractionFinish?.Invoke();
-    }
 }
