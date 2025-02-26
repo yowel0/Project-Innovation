@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Ground Check using a Raycast
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * (playerHeight * 0.5f + 0.02f), Color.red);
 
         MyInput();      // Read player input
         SpeedControl(); // Control player movement speed
