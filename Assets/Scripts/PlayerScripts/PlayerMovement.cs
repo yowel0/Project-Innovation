@@ -1,12 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static event Action OnSprint;
     [Header("Movement")]
-    public float moveSpeed;  // Speed of movement
-    public float groundDrag; // Drag applied when grounded
+    [SerializeField] float moveSpeed;  // Speed of movement
+    [SerializeField] float groundDrag; // Drag applied when grounded
+
+    [Header("Sprinting")]
+    [SerializeField] float sprintSpeed;// Sprinting speed
+    [SerializeField] KeyCode sprintKey;
+    [SerializeField] float currentStamina;
+    [SerializeField] float maxStamina;
+    [SerializeField] float staminaConsumption;
+    [SerializeField] float staminaRegeneration;
+
 
     [Header("Ground Check")]
     public float playerHeight;  // Height of the player collider
@@ -86,6 +97,28 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");  // Get horizontal input (left/right keys or A/D keys)
         verticalInput = Input.GetAxisRaw("Vertical");      // Get vertical input (up/down keys or W/S keys)
+
+        moveSpeed = storedMoveSpeed;
+
+        // Sprinting
+        if (Input.GetKey(sprintKey))
+        {
+            if (currentStamina - staminaConsumption >= 0)
+            {
+                moveSpeed = sprintSpeed;
+                currentStamina -= staminaConsumption;
+            }
+            OnSprint?.Invoke();
+        }
+        else
+        {
+            currentStamina = Mathf.Min(currentStamina + staminaRegeneration, maxStamina);
+            if (currentStamina < maxStamina)
+            {
+                // Add panting sound?
+            }
+        }
+
     }
 
     private void MovePlayer()
@@ -163,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);  // Apply limited velocity
         }
     }
-
+    /*
     public void FreezeMovement()
     {
         if (moveSpeed > .5f)
@@ -176,7 +209,7 @@ public class PlayerMovement : MonoBehaviour
     public void RestoreMoveSpeed()
     {
         moveSpeed = storedMoveSpeed;
-    }
+    }*/
 
     private void OnDestroy()
     {

@@ -119,12 +119,12 @@ public class MonsterRoutineWalking : MonoBehaviour
 
         if (NavMesh.CalculatePath(transform.position, dLocation, NavMesh.AllAreas, path))
         {
-            Debug.Log("The path was calculated correctly");
+            //Debug.Log("The path was calculated correctly");
             distractionStartingDistance = RemainingDistance(path.corners);
         }
         else
         {
-            Debug.Log("The distance of the path is probably incorrect");
+            //Debug.Log("The distance of the path is probably incorrect");
             distractionStartingDistance = RemainingDistance(mAgent.path.corners);
 
         }

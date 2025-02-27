@@ -7,7 +7,6 @@ public class PickUpScript : MonoBehaviour
 {
     [Header("Keybinds")]
     public KeyCode GrabOrPlaceKey;
-    public KeyCode PostItSummonKey;
 
     [Header("Configuration")]
     public bool enablePostItNotes = false;
@@ -22,7 +21,6 @@ public class PickUpScript : MonoBehaviour
     private GameObject heldObj; // object which we pick up
     private Rigidbody heldObjRb; // Rigidbody of object we pick up
     private int LayerNumber; // layer index
-    private int postItNoteCount = 0; // keeping track of the number of post it notes
 
     void Start()
     {
@@ -32,14 +30,6 @@ public class PickUpScript : MonoBehaviour
 
     void Update()
     {
-        // Grab post-it note
-        if (Input.GetKeyDown(PostItSummonKey) && heldObj == null
-            && enablePostItNotes && (postItNoteCount < postItNoteLimit))
-        {
-            PlayerMovement.GetPlayer().FreezeMovement(); // Freezing player movement
-            PickUpObject(Instantiate(postItPrefab, new Vector3(0, 0, 0), GetComponent<Transform>().rotation));
-            postItNoteCount++;
-        }
 
         // Place/grab object
         if (Input.GetKeyDown(GrabOrPlaceKey)) // change E to whichever key you want to press to pick up
@@ -103,30 +93,6 @@ public class PickUpScript : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange, ~(1 << LayerNumber)))
             {
-                Debug.Log("held obj has NoteTextScript: " + (heldObj.GetComponentInChildren<NoteTextScript>() != null));
-
-                if (heldObj.GetComponentInChildren<NoteTextScript>() != null)
-                {
-                    if (hit.transform.gameObject.tag == "canPickUp" ||
-                        hit.transform.gameObject.tag == "canBeInteractedWith")
-                    {
-                        Debug.Log("it has the tag");
-
-                        GameObject placeTarget = null;
-
-                        if (hit.transform.gameObject.GetComponent<GrabbableObjectScript>() != null)
-                        {
-                            placeTarget = hit.transform.gameObject;
-                        }
-                        else
-                        {
-                            placeTarget = hit.transform.parent.gameObject;
-                        }
-
-                        PlacePostItNote(placeTarget);
-                    }
-                }
-
                 // make sure right tag is attached
                 if (hit.transform.gameObject.tag == "canBePlacedOn")
                 {
@@ -205,69 +171,6 @@ public class PickUpScript : MonoBehaviour
     }
 
 
-    void PlacePostItNote(GameObject placeTarget)
-    {
-        Debug.Log("Calling PlacePostItNote");
-        Transform placeLocation = null;
-        foreach (Transform child in placeTarget.transform)
-        {
-            Debug.Log("In the foreach loop");
-            if (child.tag == "IsPostItNotePlacement")
-            {
-                Debug.Log("Found the child");
-                placeLocation = child; 
-                break;
-            }
-        }
-
-
-        Debug.Log("Continue the process");
-
-        // Not working if there's already a note placed
-        if (placeLocation == null || placeLocation.childCount > 0) return;
-        //GameObject placerIsHolding = placeOnObj.GetComponent<PlacerScript>().heldObject;
-
-        Debug.Log("I can be placed");
-
-        Physics.IgnoreCollision(heldObj.GetComponentInChildren<Collider>(), player.GetComponent<Collider>(), false);
-        heldObj.layer = 0; // object assigned back to default layer
-
-        foreach (Transform child in heldObj.transform)
-        {
-            child.gameObject.layer = 0;
-        }
-
-        if (!heldObj.GetComponent<GrabbableObjectScript>().hasPhysics)
-        {
-            // Post-it note
-            heldObj.transform.rotation = placeLocation.rotation;
-            heldObj.transform.Rotate(90, 0, 0);
-        }
-
-        heldObj.transform.parent = placeLocation; // parent object
-        heldObj.transform.position = placeLocation.position; // placing object in the right place
-
-        //heldObj.transform.parent = null; // unparent object
-        //heldObj.transform.position = placeLocation.position; // placing object in the right place
-
-        heldObj = null;
-
-        /*
-        // linking object with the thing it's placed on and vice versa
-        placeOnObj.GetComponent<PlacerScript>().heldObject = heldObj;
-        heldObj.GetComponent<GrabbableObjectScript>().placedOnPlacable = placeOnObj;
-
-        if (placerIsHolding != null)
-        {
-            PickUpObject(placerIsHolding); // swapping object
-        }
-        else
-        {
-            heldObj = null; // undefine game object
-        }
-        */
-
-    }
 
     private void SetGameLayerRecursive(GameObject gameObject, int layer)
     {

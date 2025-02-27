@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MonsterRoutineWalking))]
 public class HearingMonster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    MonsterRoutineWalking mrw;
+
+    private void OnEnable()
     {
-        
+        mrw = GetComponent<MonsterRoutineWalking>();
+        PlayerMovement.OnSprint += HearPlayer;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        PlayerMovement.OnSprint -= HearPlayer;
+    }
+
+    void HearPlayer()
+    {
+        mrw.SetDistraction(PlayerMovement.GetPlayer().transform.position);
     }
 }
