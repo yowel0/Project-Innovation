@@ -11,6 +11,12 @@ public class MicrophoneManager : MonoBehaviour
 
     public bool ShowDebugMessages;
 
+    [SerializeField]
+    private int historyDepth;
+    [SerializeField]
+    private float[] decibelHistory;
+    private int historyTracker;
+
     private string _device;
 
     //mic initialization
@@ -117,7 +123,23 @@ public class MicrophoneManager : MonoBehaviour
         MicLoudness = MicrophoneLevelMax();
         MicLoudnessinDecibels = MicrophoneLevelMaxDecibels();
 
-        if (ShowDebugMessages) Debug.Log("Decibels: "+MicLoudnessinDecibels);
+
+        decibelHistory[historyTracker] = MicLoudnessinDecibels;
+        historyTracker++;
+        historyTracker %= historyDepth;
+
+
+        if (ShowDebugMessages)
+        {
+            Debug.Log("Decibels: "+MicLoudnessinDecibels);
+            float total = 0f;
+            for (int i = 0; i < historyDepth; i++)
+            {
+                total += decibelHistory[i];
+            }
+            float average = total / historyDepth;
+            Debug.Log("Average of past " + historyDepth + " records: " + average);
+        }
     }
 
     bool _isInitialized;
@@ -127,6 +149,8 @@ public class MicrophoneManager : MonoBehaviour
         InitMic();
         _isInitialized = true;
         Instance = this;
+
+        decibelHistory = new float[historyDepth];
     }
 
     //stop mic when loading a new level or quit application

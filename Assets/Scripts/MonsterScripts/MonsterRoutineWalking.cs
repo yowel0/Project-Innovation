@@ -11,6 +11,8 @@ public class MonsterRoutineWalking : MonoBehaviour
 
     int currentDestination = 0;
 
+    [SerializeField]
+    bool isDistracted;
 
     NavMeshAgent mAgent;
 
@@ -20,8 +22,21 @@ public class MonsterRoutineWalking : MonoBehaviour
         ContinueDestination();
     }
 
+    // ugly test
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SetDistraction(new Vector3(17, 0, -5));
+            Debug.Log("Distracted!");
+        }
+    }
+
+
+
     private void FixedUpdate()
     {
+
         if (mAgent.remainingDistance < .1f)
         {
             NextDestination();
@@ -31,29 +46,37 @@ public class MonsterRoutineWalking : MonoBehaviour
     public void ContinueDestination()
     {
         mAgent.SetDestination(destinations[currentDestination].GetEntrancePos());
+        isDistracted = false;
     }
 
     public void NextDestination()
     {
-        //GetComponent<Rigidbody>().detectCollisions = false;
-        //GetComponentInChildren<Collider>().enabled = false;
-        Vector3 tunnelExit = destinations[currentDestination].GetExitPos();
+        // Don't pick new destination if it was distracted
+        if (!isDistracted)
+        {
+            // Don't teleport if destination wasn't actually reached
+            if (mAgent.pathStatus != NavMeshPathStatus.PathPartial)
+            {
+                Vector3 tunnelExit = destinations[currentDestination].GetExitPos();
+                mAgent.Warp(new Vector3(tunnelExit.x, transform.position.y, tunnelExit.z));
+            }
+            else
+            {
+                Debug.Log("Couldn't reach destination, attempting next destination");
+            }
 
-        //Debug.Log("Current position: " + transform.position);
+            currentDestination++;
+            currentDestination %= destinations.Length;
+        }
 
-        //transform.position = new Vector3(tunnelExit.x, transform.position.y, tunnelExit.z);
-
-        mAgent.Warp(new Vector3(tunnelExit.x, transform.position.y, tunnelExit.z));
-
-        //Debug.Log("New position: " + transform.position);
-        //Debug.Log("Should be: " + tunnelExit);
-
-        //GetComponent<Rigidbody>().detectCollisions = true;
-        //GetComponentInChildren<Collider>(true).enabled = true;
-
-        currentDestination++;
-        currentDestination %= destinations.Length;
         ContinueDestination();
+    }
+
+    // Called by monster specific behaviour
+    public void SetDistraction(Vector3 dLocation)
+    {
+        mAgent.SetDestination(dLocation);
+        isDistracted = true;
     }
 
 }
