@@ -10,10 +10,11 @@ public class Tunnel : MonoBehaviour
     Vector3 entrancePos;
     Vector3 exitPos;
 
-    private void Start()
+    private void Awake()
     {
         entrancePos = transform.position;
         exitPos = exitObj.transform.position;
+        
     }
 
     public Vector3 GetEntrancePos()
