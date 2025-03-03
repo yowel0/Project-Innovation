@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxStamina;
     [SerializeField] float staminaConsumption;
     [SerializeField] float staminaRegeneration;
+    [SerializeField] TextMeshProUGUI staminaText;
 
 
     [Header("Ground Check")]
@@ -34,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody rb;  // Reference to the Rigidbody component
 
-    Vector3 startPos;
+    Vector3 respawnPos;
     float storedMoveSpeed;
     bool isWalking;
 
@@ -65,7 +67,9 @@ public class PlayerMovement : MonoBehaviour
         rb.freezeRotation = true;  // Freeze rotation to prevent physics affecting the orientation
         storedMoveSpeed = moveSpeed;
         audioPlayer = GetComponent<AudioSource>();
-        startPos = rb.position;
+        respawnPos = rb.position;
+
+        DeathManager.OnDeath += Respawn;
     }
 
     private void Update()
@@ -109,6 +113,9 @@ public class PlayerMovement : MonoBehaviour
                 currentStamina -= staminaConsumption;
             }
             OnSprint?.Invoke();
+
+            if (staminaText != null) staminaText.color = Color.red;
+            
         }
         else
         {
@@ -116,7 +123,18 @@ public class PlayerMovement : MonoBehaviour
             if (currentStamina < maxStamina)
             {
                 // Add panting sound?
+                if (staminaText != null) staminaText.color = Color.green;
+                
             }
+            else
+            {
+                if (staminaText != null) staminaText.color = Color.white;
+            }
+        }
+
+        if (staminaText != null)
+        {
+            staminaText.text = "Stamina: " + (int)currentStamina;
         }
 
     }
@@ -144,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         // Move the player by setting the new position
         rb.MovePosition(newPosition);
 
-        if (rb.position.y < -10) rb.position = startPos;
+        if (rb.position.y < -10) Respawn();
     }
 
     void PlayWalkSFX()
@@ -214,5 +232,20 @@ public class PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         playerSingleton = null;
+        DeathManager.OnDeath -= Respawn;
+    }
+
+    void Respawn()
+    {
+        rb.position = respawnPos;
+    }
+
+    public void SetRespawn()
+    {
+        SetRespawn(rb.position);
+    }
+    public void SetRespawn(Vector3 pos)
+    {
+        respawnPos = pos;
     }
 }

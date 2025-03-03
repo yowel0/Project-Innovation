@@ -28,12 +28,22 @@ public class MonsterRoutineWalking : MonoBehaviour
     float distractionMinTime = 1;
     float distractionMinTimeLeft;
 
+    Vector3 startPos;
+
     NavMeshAgent mAgent;
 
     void Start()
     {
+        startPos = transform.position;
         mAgent = GetComponent<NavMeshAgent>();
         ContinueDestination();
+
+        DeathManager.OnDeath += ResetPosition;
+    }
+
+    private void OnDestroy()
+    {
+        DeathManager.OnDeath -= ResetPosition;
     }
 
     // Ugly hardcoded test for distractions
@@ -143,6 +153,14 @@ public class MonsterRoutineWalking : MonoBehaviour
         for (int i = 0; i < points.Length - 1; i++)
             distance += Vector3.Distance(points[i], points[i + 1]);
         return distance;
+    }
+
+
+    private void ResetPosition()
+    {
+        currentDestination = 0;
+        mAgent.Warp(startPos);
+        ContinueDestination();
     }
 
 }

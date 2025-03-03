@@ -25,6 +25,7 @@ public class LaserPathHolder : MonoBehaviour
 
     public Transform GetFirstPoint()
     {
+        currentPointIndex = 0;
         return pointLocations[0];
     }
     public Transform GetNextPoint()

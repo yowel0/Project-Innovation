@@ -28,6 +28,18 @@ public class LaserScript : MonoBehaviour
     private void Start()
     {
         if (pathHolder == null) Debug.LogWarning("Laser doesn't have a path attached");
+        ResetPosition();
+        DeathManager.OnDeath += ResetPosition;
+    }
+
+    private void OnDestroy()
+    {
+        DeathManager.OnDeath -= ResetPosition;
+    }
+
+    private void ResetPosition()
+    {
+        transform.SetPositionAndRotation(pathHolder.GetFirstPoint().position, transform.rotation);
         currentDestination = pathHolder.GetFirstPoint();
     }
 
