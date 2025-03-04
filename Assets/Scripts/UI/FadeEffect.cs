@@ -9,7 +9,9 @@ public class FadeEffect : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(FadeIn()); // Automatically fade in at the start
+        //StartCoroutine(FadeIn()); // Automatically fade in at the start
+        fadeImage.gameObject.SetActive(false);
+        DeathManager.OnRespawn += HideScreen;
     }
 
     public IEnumerator FadeIn()
@@ -41,5 +43,10 @@ public class FadeEffect : MonoBehaviour
             fadeImage.color = fadeColor;
             yield return null;
         }
+    }
+
+    void HideScreen()
+    {
+        fadeImage.gameObject.SetActive(false);
     }
 }

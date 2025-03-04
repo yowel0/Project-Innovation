@@ -1,22 +1,36 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DeathManager : MonoBehaviour
 {
     
     public static event Action OnDeath;
+    public static event Action OnRespawn;
 
     public static event Action OnCheckpoint;
 
-
+    [SerializeField]
+    private TextMeshProUGUI deathCause;
 
     public void KillPlayer(string deathMessage)
     {
         // Put the scripts for the death screen here and invoke OnDeath to reset everything
-        Debug.Log(deathMessage);
+        FadeManager.instance.TriggerFadeOut();
+        deathCause.text = deathMessage;
         OnDeath?.Invoke();
+    }
+
+    public void Respawn()
+    {
+        OnRespawn?.Invoke();
+    }
+
+    public void CheckpointReached()
+    {
+        OnCheckpoint?.Invoke();
     }
 
     public static DeathManager GetMainManager()

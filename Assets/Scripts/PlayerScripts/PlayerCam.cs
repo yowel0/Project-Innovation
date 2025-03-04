@@ -12,15 +12,22 @@ public class PlayerCam : MonoBehaviour
     float xRotation; // Current rotation around the X axis (vertical)
     float yRotation; // Current rotation around the Y axis (horizontal)
 
+    bool disableCameraControl = false;
+
     private void Start()
     {
         // Lock cursor and hide it when game starts
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        DeathManager.OnDeath += DisableCameraControl;
+        DeathManager.OnRespawn += EnableCameraControl;
     }
 
     private void Update()
     {
+        if (disableCameraControl) return;
+
         // Get mouse input for rotation
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
@@ -37,5 +44,19 @@ public class PlayerCam : MonoBehaviour
 
         // Rotate the player's orientation around Y axis (horizontal rotation)
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    void EnableCameraControl()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        disableCameraControl = false;
+    }
+
+    void DisableCameraControl()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        disableCameraControl = true;
     }
 }

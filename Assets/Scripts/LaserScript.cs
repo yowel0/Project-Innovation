@@ -29,12 +29,12 @@ public class LaserScript : MonoBehaviour
     {
         if (pathHolder == null) Debug.LogWarning("Laser doesn't have a path attached");
         ResetPosition();
-        DeathManager.OnDeath += ResetPosition;
+        DeathManager.OnRespawn += ResetPosition;
     }
 
     private void OnDestroy()
     {
-        DeathManager.OnDeath -= ResetPosition;
+        DeathManager.OnRespawn -= ResetPosition;
     }
 
     private void ResetPosition()
