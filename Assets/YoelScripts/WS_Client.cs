@@ -7,10 +7,13 @@ using WebSocketSharp;
 
 public class WS_Client : MonoBehaviour
 {
-    public GameObject cubePrefab;
     public GameObject plane;
+    public GameObject cubePrefab;
+    public GameObject spherePrefab;
     WebSocket ws;
     private readonly ConcurrentQueue<Action> _actions = new ConcurrentQueue<Action>();
+
+    public Action<Quaternion> GyroscopeChanged;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,22 +38,30 @@ public class WS_Client : MonoBehaviour
         switch (command)
         {
             case ("ActivatePlane"):
-                print("ActivatePlane");
                 plane.SetActive(!plane.activeInHierarchy);
             break;
-            case ("SpawnGameobject"):
-                SpawnGameObject();
-                print("gambeobjeccooo");
+            case ("SpawnCube"):
+                Instantiate(cubePrefab);;
+            break;
+            case ("SpawnSphere"):
+                Instantiate(spherePrefab);;
             break;
         }
     }
     void ProcessValue(string _value){
         string value = _value.Replace("value:","");
         print("value recognized: " + value);
+        if (value.StartsWith("gyroscope:")){
+            string gyroscopeString = value.Replace("gyroscope:","");
+            float[] floats = Array.ConvertAll(gyroscopeString.Split(','), float.Parse);
+            Quaternion gyroscope = new Quaternion(floats[0],floats[1],floats[2],floats[3]);
+            
+            GyroscopeChanged?.Invoke(gyroscope);
+        }
     }
 
-    void SpawnGameObject(){
-        Instantiate(cubePrefab);
+    void StartCall(int callID){
+        ws.Send("phonecall:" + callID);
     }
 
     // Update is called once per frame
@@ -61,7 +72,8 @@ public class WS_Client : MonoBehaviour
             return;
         }
         if (Input.GetKeyDown(KeyCode.Space)){
-            ws.Send("Hellosent");
+            StartCall(0);
+            // ws.Send("Hellosent");
             //SpawnGameObject();
         }
 
