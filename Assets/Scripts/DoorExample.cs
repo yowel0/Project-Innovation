@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorExample : MonoBehaviour
 {
+    public UnityEvent OnDoorOpen;
+
     [SerializeField]
     bool isOpen;
     
@@ -18,11 +21,20 @@ public class DoorExample : MonoBehaviour
     }
 
     
-    public void OpenDoor()
+    public void OpenDoorCheck()
     {
         if (isOpen) return;
-        transform.Translate(1, 1, 1);
         isOpen = true;
+
+        OnDoorOpen?.Invoke();
+
+    }
+
+    public void OpenDoor()
+    {
+        transform.Translate(1, 1, 1);
+        //aSource.Play();
+
     }
 
     private void Respawn()
