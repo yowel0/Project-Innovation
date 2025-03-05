@@ -19,7 +19,7 @@ public class BallMinigame : MonoBehaviour
         }
     }
 
-    void StartMinigame(){
+    public void StartMinigame(){
         SceneManager.LoadScene("2D Minigame", LoadSceneMode.Additive);
     }
 }
