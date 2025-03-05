@@ -39,6 +39,11 @@ public class MonsterRoutineWalking : MonoBehaviour
         ContinueDestination();
 
         DeathManager.OnRespawn += ResetPosition;
+
+        for (int i = 0; i < destinations.Length; i++)
+        {
+            destinations[i].SetIdentifier(i);
+        }
     }
 
     private void OnDestroy()
@@ -90,7 +95,8 @@ public class MonsterRoutineWalking : MonoBehaviour
 
     public void ContinueDestination()
     {
-        mAgent.SetDestination(destinations[currentDestination].GetEntrancePos());
+        Vector3 newDestination = destinations[currentDestination].GetEntrancePos();
+        mAgent.SetDestination(new Vector3(newDestination.x, transform.position.y, newDestination.z));
         isDistracted = false;
     }
 
@@ -145,6 +151,14 @@ public class MonsterRoutineWalking : MonoBehaviour
     }
 
 
+    public void ForcedEncounter(ForcedEncounter location)
+    {
+        mAgent.Warp(location.transform.position);
+        currentDestination = location.GetDestination().GetIdentifier();
+        ContinueDestination();
+    }
+
+
     // Copied from internet, better calculation of remaining distance for path.
     // mAgent.remainingDistance doesn't like calculating around corners
     public float RemainingDistance(Vector3[] points)
@@ -163,5 +177,7 @@ public class MonsterRoutineWalking : MonoBehaviour
         mAgent.Warp(startPos);
         ContinueDestination();
     }
+
+
 
 }
