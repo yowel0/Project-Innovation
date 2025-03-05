@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class RedHerringSoundManager : MonoBehaviour
+public class RandomSoundManager : MonoBehaviour
 {
+    [SerializeField] AudioSource aSource;
+
     [SerializeField] AudioClip[] sounds;
     [SerializeField] bool disableSounds;
 
@@ -15,9 +17,8 @@ public class RedHerringSoundManager : MonoBehaviour
     [Header("Number of duplicates allowed")]
     [SerializeField] int maxRepeat;
 
-    [Header("Set by code")]
-    [SerializeField] AudioSource aSource;
 
+    [Header("Set by code")]
     [SerializeField] float chosenInterval;
     [SerializeField] float intervalProgress;
 
@@ -27,7 +28,7 @@ public class RedHerringSoundManager : MonoBehaviour
     
     void Start()
     {
-        aSource = GetComponent<AudioSource>();
+        if (aSource == null) aSource = GetComponent<AudioSource>();
         RandomizeInterval();
     }
 
@@ -47,7 +48,6 @@ public class RedHerringSoundManager : MonoBehaviour
     void PlaySound()
     {
         int nr = GetRandomSoundNr();
-
 
         aSource.PlayOneShot(sounds[nr]);
     }
