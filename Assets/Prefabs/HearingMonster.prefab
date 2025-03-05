@@ -287,6 +287,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1714659678104773748}
     m_Modifications:
+    - target: {fileID: 5347564929025891187, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -330,6 +334,10 @@ PrefabInstance:
     - target: {fileID: 8353091023612148941, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
       propertyPath: m_Name
       value: IntensityRandomSoundPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434251305781613942, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: rolloffMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
