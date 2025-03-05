@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         audioPlayer = GetComponent<AudioSource>();
         respawnPos = rb.position;
 
-        DeathManager.OnDeath += Respawn;
+        DeathManager.OnRespawn += Respawn;
     }
 
     private void Update()
@@ -232,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         playerSingleton = null;
-        DeathManager.OnDeath -= Respawn;
+        DeathManager.OnRespawn -= Respawn;
     }
 
     void Respawn()

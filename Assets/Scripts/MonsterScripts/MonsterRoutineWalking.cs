@@ -38,12 +38,12 @@ public class MonsterRoutineWalking : MonoBehaviour
         mAgent = GetComponent<NavMeshAgent>();
         ContinueDestination();
 
-        DeathManager.OnDeath += ResetPosition;
+        DeathManager.OnRespawn += ResetPosition;
     }
 
     private void OnDestroy()
     {
-        DeathManager.OnDeath -= ResetPosition;
+        DeathManager.OnRespawn -= ResetPosition;
     }
 
     // Ugly hardcoded test for distractions
@@ -96,6 +96,7 @@ public class MonsterRoutineWalking : MonoBehaviour
 
     public void NextDestination()
     {
+        Debug.Log(mAgent.pathStatus);
         // Don't pick new destination if it was distracted and reached its destination
         if (!isDistracted)
         {
