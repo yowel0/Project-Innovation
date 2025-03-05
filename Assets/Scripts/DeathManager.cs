@@ -15,17 +15,23 @@ public class DeathManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI deathCause;
 
+    [SerializeField]
+    private bool playerIsDead;
+
     public void KillPlayer(string deathMessage)
     {
+        if (playerIsDead) return;
         // Put the scripts for the death screen here and invoke OnDeath to reset everything
         FadeManager.instance.TriggerFadeOut();
         deathCause.text = deathMessage;
         OnDeath?.Invoke();
+        playerIsDead = true;
     }
 
     public void Respawn()
     {
         OnRespawn?.Invoke();
+        playerIsDead = false;
     }
 
     public void CheckpointReached()
