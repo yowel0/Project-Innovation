@@ -24,6 +24,11 @@ public class PlayerCam : MonoBehaviour
         DeathManager.OnRespawn += EnableCameraControl;
     }
 
+    private void OnDestroy()
+    {
+        DisableCameraControl();
+    }
+
     private void Update()
     {
         if (disableCameraControl) return;
