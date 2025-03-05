@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallMovement : MonoBehaviour
+public class BallMovement2D : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody2D rb;
 
     [SerializeField]
     Transform gyroTransform;
@@ -13,7 +13,7 @@ public class BallMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,6 +21,6 @@ public class BallMovement : MonoBehaviour
     {
         Vector3 input = gyroTransform.up - Vector3.up * Vector3.Dot(gyroTransform.up.normalized, Vector3.up);
         //print(input);
-        rb.AddForce(input * speed);
+        rb.AddForce(new Vector3(input.x,input.z) * speed);
     }
 }
