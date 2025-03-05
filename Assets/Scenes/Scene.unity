@@ -2380,41 +2380,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: sprintKey
-      value: 304
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: maxStamina
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: sprintSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: staminaText
       value: 
       objectReference: {fileID: 101738936}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: playerHeight
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: currentStamina
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: staminaConsumption
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: staminaRegeneration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2792922947638223669, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4787421472207980584, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.65
@@ -2462,10 +2430,6 @@ PrefabInstance:
     - target: {fileID: 7463317549859707460, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7986100586907755329, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
