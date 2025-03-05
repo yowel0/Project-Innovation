@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/YoelTestScene.unity
+    guid: 4e7ff1b8c05e1bc4da1495c20fb67d0e
+  - enabled: 1
+    path: Assets/Scenes/2D Minigame.unity
+    guid: 9f6d260320aa2614c84ba36c2b49f1f2
   m_configObjects: {}
