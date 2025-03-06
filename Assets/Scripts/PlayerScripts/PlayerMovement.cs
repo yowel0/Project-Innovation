@@ -82,14 +82,8 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl(); // Control player movement speed
 
         // Handle Drag based on grounded state
-        if (grounded)
-        {
-            rb.drag = groundDrag;  // Apply ground drag if grounded
-        }
-        else
-        {
-            rb.drag = 0;  // No drag if not grounded
-        }
+        rb.drag = groundDrag;  // Apply ground drag if grounded
+        
     }
 
     private void FixedUpdate()

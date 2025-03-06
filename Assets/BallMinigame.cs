@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class BallMinigame : MonoBehaviour
 {
+    bool started = false;
+    bool finished = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,12 +16,13 @@ public class BallMinigame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            StartMinigame();
-        }
+
     }
 
     public void StartMinigame(){
-        SceneManager.LoadScene("2D Minigame", LoadSceneMode.Additive);
+        if (!started){
+            started = true;
+            SceneManager.LoadScene("2D Minigame", LoadSceneMode.Additive);
+        }
     }
 }
