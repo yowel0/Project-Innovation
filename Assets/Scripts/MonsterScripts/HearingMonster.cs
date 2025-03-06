@@ -18,7 +18,7 @@ public class HearingMonster : MonoBehaviour
         PlayerMovement.OnSprint -= HearPlayer;
     }
 
-    void HearPlayer()
+    public void HearPlayer()
     {
         mrw.SetDistraction(PlayerMovement.GetPlayer().transform.position);
     }
