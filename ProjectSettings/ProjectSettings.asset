@@ -463,6 +463,26 @@ PlayerSettings:
       m_Height: 1024
       m_Kind: 4
       m_SubKind: App Store
+    - m_Textures: []
+      m_Width: 120
+      m_Height: 120
+      m_Kind: 3
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 80
+      m_Height: 80
+      m_Kind: 3
+      m_SubKind: iPhone
+    - m_Textures: []
+      m_Width: 80
+      m_Height: 80
+      m_Kind: 3
+      m_SubKind: iPad
+    - m_Textures: []
+      m_Width: 40
+      m_Height: 40
+      m_Kind: 3
+      m_SubKind: iPad
   m_BuildTargetBatching: []
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
