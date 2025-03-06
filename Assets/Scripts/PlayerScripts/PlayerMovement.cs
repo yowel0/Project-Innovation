@@ -20,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float staminaRegeneration;
     [SerializeField] TextMeshProUGUI staminaText;
 
+    [Header("Sounds")]
+    [SerializeField] AudioSource footStepSource;
+    [SerializeField] AudioSource staminaSoundSource;
+    [SerializeField] SoundLoudness walkSound;
+    [SerializeField] SoundLoudness sprintSound;
 
     [Header("Ground Check")]
     public float playerHeight;  // Height of the player collider
@@ -101,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         // Sprinting
         if (Input.GetKey(sprintKey))
         {
+            //SetFootstepSound(sprintSound.sound);
             if (currentStamina - staminaConsumption >= 0)
             {
                 moveSpeed = sprintSpeed;
@@ -113,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            //SetFootstepSound(walkSound.sound);
             currentStamina = Mathf.Min(currentStamina + staminaRegeneration, maxStamina);
             if (currentStamina < maxStamina)
             {
@@ -159,6 +166,13 @@ public class PlayerMovement : MonoBehaviour
         if (rb.position.y < -10) Respawn();
     }
 
+    void SetFootstepSound(AudioClip sound)
+    {
+        if (footStepSource.clip.name != sound.name)
+        {
+            footStepSource.clip = sound;
+        }
+    }
     void PlayWalkSFX()
     {
         if (audioPlayer != null)
@@ -167,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 //Debug.Log("started walk sfx");
                 audioPlayer.Play();
+                //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
             }
             else
             {
