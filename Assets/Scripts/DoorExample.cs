@@ -23,6 +23,7 @@ public class DoorExample : MonoBehaviour
     
     public void OpenDoorCheck()
     {
+        print("opendoorchet");
         if (isOpen) return;
         isOpen = true;
 

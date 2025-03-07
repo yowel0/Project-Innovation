@@ -15,6 +15,7 @@ public class WS_Client : MonoBehaviour
 
     public static Action<Quaternion> GyroscopeChanged;
     public static Action<int> CardScanned;
+    public static Action<int> CodeEntered;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +33,9 @@ public class WS_Client : MonoBehaviour
             }
             else if (e.Data.StartsWith("card:")){
                 _actions.Enqueue(() => ProcessCard(e.Data));
+            }
+            else if (e.Data.StartsWith("code:")){
+                _actions.Enqueue(() => ProcessCode(e.Data));
             }
         };  
     }
@@ -70,6 +74,13 @@ public class WS_Client : MonoBehaviour
         int cardID = int.Parse(card);
         print("card recognized: " + card);
         CardScanned?.Invoke(cardID);
+    }
+
+    void ProcessCode(string _code){
+        string code = _code.Replace("code:","");
+        int codeINT = int.Parse(code);
+        print("codedede"+codeINT);
+        CodeEntered?.Invoke(codeINT);
     }
 
     void StartCall(int callID){
