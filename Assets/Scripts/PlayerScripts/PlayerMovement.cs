@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public static event Action OnSprint;
     [Header("Movement")]
     [SerializeField] float moveSpeed;  // Speed of movement
     [SerializeField] float groundDrag; // Drag applied when grounded
@@ -23,13 +22,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Sounds")]
     [SerializeField] AudioSource footStepSource;
     [SerializeField] AudioSource staminaSoundSource;
-    [SerializeField] SoundLoudness walkSound;
-    [SerializeField] SoundLoudness sprintSound;
-
-    [Header("Ground Check")]
-    public float playerHeight;  // Height of the player collider
-    public LayerMask whatIsGround;  // Layer mask to define what is considered ground
-    bool grounded;  // Flag indicating if the player is grounded
+    [SerializeField] AudioClip walkStepSound;
+    [SerializeField] AudioClip sprintStepSound;
+    [SerializeField] AudioClip regainStaminaSound;
+    [SerializeField] AudioClip noStaminaSound;
 
     [Header("Orientation")]
     public Transform orientation;  // Transform used for orientation (typically the player's body)
@@ -44,8 +40,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 respawnPos;
     float storedMoveSpeed;
     bool isWalking;
-
-    AudioSource audioPlayer;
+    bool isDead;
 
     public static PlayerMovement GetPlayer()
     {
@@ -71,28 +66,24 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();  // Get the Rigidbody component attached to this GameObject
         rb.freezeRotation = true;  // Freeze rotation to prevent physics affecting the orientation
         storedMoveSpeed = moveSpeed;
-        audioPlayer = GetComponent<AudioSource>();
         respawnPos = rb.position;
+        rb.drag = groundDrag;
 
+        DeathManager.OnDeath += PlayerDead;
         DeathManager.OnRespawn += Respawn;
     }
 
     private void Update()
     {
-        // Ground Check using a Raycast
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * (playerHeight * 0.5f + 0.02f), Color.red);
-
+        if (isDead) return;
         MyInput();      // Read player input
         SpeedControl(); // Control player movement speed
-
-        // Handle Drag based on grounded state
-        rb.drag = groundDrag;  // Apply ground drag if grounded
         
     }
 
     private void FixedUpdate()
     {
+        if (isDead) return;
         MovePlayer();  // Move the player based on calculated input
     }
 
@@ -106,29 +97,30 @@ public class PlayerMovement : MonoBehaviour
         // Sprinting
         if (Input.GetKey(sprintKey))
         {
-            //SetFootstepSound(sprintSound.sound);
+            SetFootstepSound(sprintStepSound);
             if (currentStamina - staminaConsumption >= 0)
             {
+                // Consuming stamina
                 moveSpeed = sprintSpeed;
                 currentStamina -= staminaConsumption;
             }
-            OnSprint?.Invoke();
 
             if (staminaText != null) staminaText.color = Color.red;
             
         }
         else
         {
-            //SetFootstepSound(walkSound.sound);
+            SetFootstepSound(walkStepSound);
             currentStamina = Mathf.Min(currentStamina + staminaRegeneration, maxStamina);
             if (currentStamina < maxStamina)
             {
-                // Add panting sound?
+                // Regaining stamina
                 if (staminaText != null) staminaText.color = Color.green;
                 
             }
             else
             {
+                // Stamina is full
                 if (staminaText != null) staminaText.color = Color.white;
             }
         }
@@ -157,6 +149,11 @@ public class PlayerMovement : MonoBehaviour
             PlayWalkSFX();  // Name is misleading
         }
 
+        if (isWalking)
+        {
+            SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+        }
+
         // Calculate the new position based on the move direction and speed
         Vector3 newPosition = rb.position + moveDirection.normalized * moveSpeed * Time.fixedDeltaTime;
 
@@ -168,30 +165,36 @@ public class PlayerMovement : MonoBehaviour
 
     void SetFootstepSound(AudioClip sound)
     {
-        if (footStepSource.clip.name != sound.name)
+        if (footStepSource.clip == null || footStepSource.clip.name != sound.name)
         {
+            isWalking = false;
             footStepSource.clip = sound;
+        }
+    }
+    void SetStaminaSound(AudioClip sound)
+    {
+        if (staminaSoundSource.clip == null || staminaSoundSource.clip.name != sound.name)
+        {
+            staminaSoundSource.clip = sound;
         }
     }
     void PlayWalkSFX()
     {
-        if (audioPlayer != null)
+        if (footStepSource != null)
         {
             if (isWalking)
             {
-                //Debug.Log("started walk sfx");
-                audioPlayer.Play();
+                footStepSource.Play();
                 //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
             }
             else
             {
-                //Debug.Log("stopped walk sfx");
-                audioPlayer.Stop();
+                footStepSource.Stop();
             }
         }
         else
         {
-            Debug.Log("Interactable: Cannot play sound. audioPlayer = " + (audioPlayer != null));
+            Debug.Log("PlayerMovement: Cannot play sound. footStepSource = " + (footStepSource != null));
         }
     }
 
@@ -207,11 +210,6 @@ public class PlayerMovement : MonoBehaviour
         return rb.velocity;  // Return current velocity of the Rigidbody
     }
 
-    public bool IsGrounded()
-    {
-        return grounded;  // Return whether the player is grounded
-    }
-
     private void SpeedControl()
     {
         Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);  // Remove vertical component from velocity
@@ -223,6 +221,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);  // Apply limited velocity
         }
     }
+
     /*
     public void FreezeMovement()
     {
@@ -241,12 +240,18 @@ public class PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         playerSingleton = null;
+        DeathManager.OnDeath -= PlayerDead;
         DeathManager.OnRespawn -= Respawn;
+    }
+    void PlayerDead()
+    {
+        isDead = true;
     }
 
     void Respawn()
     {
         rb.position = respawnPos;
+        isDead = false;
     }
 
     public void SetRespawn()

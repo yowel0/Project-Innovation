@@ -52,14 +52,14 @@ public class MonsterRoutineWalking : MonoBehaviour
     }
 
     // Ugly hardcoded test for distractions
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
             SetDistraction(new Vector3(17, 0, -5));
             Debug.Log("Distracted!");
         }
-    }
+    }*/
 
 
 
@@ -72,11 +72,12 @@ public class MonsterRoutineWalking : MonoBehaviour
         // If the agent doesn't have a path, the remaining distance is 0. Agent needs time to calculate path
         if (rDistance < .1f && mAgent.hasPath)
         {
-            NextDestination();
+            if (isDistracted) ContinueDestination();
+            else NextDestination();
         }
 
-
-        if (isDistracted)
+        // Forgetting distractions
+        /*if (isDistracted)
         {
             // Timer to give mAgent enough time to calculate its path
             distractionMinTimeLeft -= Time.fixedDeltaTime;
@@ -89,7 +90,7 @@ public class MonsterRoutineWalking : MonoBehaviour
                 Debug.Log("Forgot distraction");
             }
 
-        }
+        }*/
 
     }
 

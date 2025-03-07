@@ -49,7 +49,6 @@ public class HeadbobController : MonoBehaviour
     {
         float speed = _controller.GetMovementSpeed(); // Get player's movement speed directly
         if (speed < _toggleSpeed) return; // If speed is below threshold, do not trigger headbobbing
-        if (!_controller.IsGrounded()) return; // If player is not grounded, do not trigger headbobbing
 
         PlayMotion(FootStepMotion()); // Trigger headbobbing based on footstep motion
     }
