@@ -185,7 +185,10 @@ public class PlayerMovement : MonoBehaviour
             if (isWalking)
             {
                 footStepSource.Play();
-                //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+                if (SoundLoudnessManager.GetManager() != null)
+                {
+                    SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+                }
             }
             else
             {
