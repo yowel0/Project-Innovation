@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isWalking)
         {
-            SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+            //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
         }
 
         // Calculate the new position based on the move direction and speed
