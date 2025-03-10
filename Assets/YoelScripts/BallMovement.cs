@@ -20,7 +20,7 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         Vector3 input = gyroTransform.up - Vector3.up * Vector3.Dot(gyroTransform.up.normalized, Vector3.up);
-        print(input);
+        //print(input);
         rb.AddForce(input * speed);
     }
 }

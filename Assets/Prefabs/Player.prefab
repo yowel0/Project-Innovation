@@ -753,7 +753,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.5
   groundDrag: 5
-  playerHeight: 2
+  sprintSpeed: 4
+  sprintKey: 304
+  currentStamina: 100
+  maxStamina: 100
+  staminaConsumption: 0.75
+  staminaRegeneration: 1
+  staminaText: {fileID: 0}
+  playerHeight: 1.5
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
@@ -802,7 +809,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!82 &6153752021556161705
 AudioSource:
@@ -1030,7 +1037,7 @@ Transform:
   m_GameObject: {fileID: 8784786910481985306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

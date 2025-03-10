@@ -5,20 +5,18 @@ using UnityEngine;
 public class SetAsGyroRotation : MonoBehaviour
 {
     [SerializeField]
-    WS_Client client;
-    [SerializeField]
     [Range(0.0f, 1.0f)]
     float rotationSpeed = 1;
     Quaternion rotationGoal;
 
     void OnEnable()
     {
-        client.GyroscopeChanged += SetRotationGoal;
+        WS_Client.GyroscopeChanged += SetRotationGoal;
     }
 
     void OnDisable()
     {
-        client.GyroscopeChanged -= SetRotationGoal;
+        WS_Client.GyroscopeChanged -= SetRotationGoal;
     }
 
     void Update()

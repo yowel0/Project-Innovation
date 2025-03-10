@@ -10,15 +10,15 @@ public class HearingMonster : MonoBehaviour
     private void OnEnable()
     {
         mrw = GetComponent<MonsterRoutineWalking>();
-        PlayerMovement.OnSprint += HearPlayer;
+        //PlayerMovement.OnSprint += HearPlayer;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.OnSprint -= HearPlayer;
+        //PlayerMovement.OnSprint -= HearPlayer;
     }
 
-    void HearPlayer()
+    public void HearPlayer()
     {
         mrw.SetDistraction(PlayerMovement.GetPlayer().transform.position);
     }

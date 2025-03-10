@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 3476690325533479001}
   - component: {fileID: 1572321555901875941}
   - component: {fileID: 3004184435415313316}
+  - component: {fileID: 658728417161454232}
   m_Layer: 0
   m_Name: HearingMonster
   m_TagString: Untagged
@@ -182,6 +183,7 @@ Transform:
   m_Children:
   - {fileID: 4925047180153354676}
   - {fileID: 88378923402839830}
+  - {fileID: 6282881967293984553}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4525439261103711565
@@ -264,3 +266,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aea23baa29e51f4f991eb7758659535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &658728417161454232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861735732427271502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6482cf970bd60d41a7a5116d1c04385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathMessage: You died to a monster
+--- !u!1001 &142811217661961345
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1714659678104773748}
+    m_Modifications:
+    - target: {fileID: 5347564929025891187, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353091023612148941, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: m_Name
+      value: IntensityRandomSoundPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8434251305781613942, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+      propertyPath: rolloffMode
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+--- !u!4 &6282881967293984553 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6253839447137012648, guid: 2454d17c3e7f968438fd5092d9558ca4, type: 3}
+  m_PrefabInstance: {fileID: 142811217661961345}
+  m_PrefabAsset: {fileID: 0}

@@ -13,7 +13,9 @@ public class WS_Client : MonoBehaviour
     WebSocket ws;
     private readonly ConcurrentQueue<Action> _actions = new ConcurrentQueue<Action>();
 
-    public Action<Quaternion> GyroscopeChanged;
+    public static Action<Quaternion> GyroscopeChanged;
+    public static Action<int> CardScanned;
+    public static Action<int> CodeEntered;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,12 @@ public class WS_Client : MonoBehaviour
             }
             else if (e.Data.StartsWith("value:")){
                 _actions.Enqueue(() => ProcessValue(e.Data));
+            }
+            else if (e.Data.StartsWith("card:")){
+                _actions.Enqueue(() => ProcessCard(e.Data));
+            }
+            else if (e.Data.StartsWith("code:")){
+                _actions.Enqueue(() => ProcessCode(e.Data));
             }
         };  
     }
@@ -48,6 +56,7 @@ public class WS_Client : MonoBehaviour
             break;
         }
     }
+
     void ProcessValue(string _value){
         string value = _value.Replace("value:","");
         print("value recognized: " + value);
@@ -58,6 +67,20 @@ public class WS_Client : MonoBehaviour
             
             GyroscopeChanged?.Invoke(gyroscope);
         }
+    }
+
+    void ProcessCard(string _cardID){
+        string card = _cardID.Replace("card:","");
+        int cardID = int.Parse(card);
+        print("card recognized: " + card);
+        CardScanned?.Invoke(cardID);
+    }
+
+    void ProcessCode(string _code){
+        string code = _code.Replace("code:","");
+        int codeINT = int.Parse(code);
+        print("codedede"+codeINT);
+        CodeEntered?.Invoke(codeINT);
     }
 
     void StartCall(int callID){
@@ -72,7 +95,7 @@ public class WS_Client : MonoBehaviour
             return;
         }
         if (Input.GetKeyDown(KeyCode.Space)){
-            StartCall(0);
+            //StartCall(0);
             // ws.Send("Hellosent");
             //SpawnGameObject();
         }
