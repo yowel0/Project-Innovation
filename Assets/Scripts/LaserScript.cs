@@ -19,7 +19,7 @@ public class LaserScript : MonoBehaviour
     private float speed;
 
     [SerializeField]
-    private LaserPathHolder pathHolder;
+    private PathHolder pathHolder;
 
 
     [SerializeField]
