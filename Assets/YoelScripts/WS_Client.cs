@@ -83,7 +83,7 @@ public class WS_Client : MonoBehaviour
         CodeEntered?.Invoke(codeINT);
     }
 
-    void StartCall(int callID){
+    public void StartCall(int callID){
         ws.Send("phonecall:" + callID);
     }
 
