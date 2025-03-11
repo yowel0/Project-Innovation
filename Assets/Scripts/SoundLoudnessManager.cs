@@ -23,14 +23,14 @@ public class SoundLoudnessManager : MonoBehaviour
     public void CheckLoudness(string soundID)
     {
         float range = 0;
-        Debug.Log("Looking for " + soundID);
+        //Debug.Log("Looking for " + soundID);
 
         foreach (SoundLoudness sound in soundData)
         {
-            Debug.Log("Comparing with " + sound.sound.name);
+            //Debug.Log("Comparing with " + sound.sound.name);
             if (sound.sound.name == soundID)
             {
-                Debug.Log("Name found!");
+                //Debug.Log("Name found!");
                 range = sound.radius;
                 break;
             }
@@ -38,11 +38,11 @@ public class SoundLoudnessManager : MonoBehaviour
 
         if (range <= 0)
         {
-            Debug.Log("Nothing was found, please check if the name is correct");
+            //Debug.Log("Nothing was found, please check if the name is correct");
             return;
         }
 
-        Debug.Log("Moving on");
+        //Debug.Log("Moving on");
 
         CheckMonsterDistance(range);
     }
@@ -53,18 +53,18 @@ public class SoundLoudnessManager : MonoBehaviour
 
         float monsterDistance = Vector3.Distance(monster.transform.position, playerPos);
 
-        Debug.Log("monsterDistance: " + monsterDistance);
-        Debug.Log("soundRange: " + soundRange);
+        //Debug.Log("monsterDistance: " + monsterDistance);
+        //Debug.Log("soundRange: " + soundRange);
 
 
         if (monsterDistance <= soundRange)
         {
-            Debug.Log("Approaching player");
+            //Debug.Log("Approaching player");
             monster.HearPlayer();
         }
         else
         {
-            Debug.Log("Distance is too big, not approaching player");
+            //Debug.Log("Distance is too big, not approaching player");
         }
     }
 

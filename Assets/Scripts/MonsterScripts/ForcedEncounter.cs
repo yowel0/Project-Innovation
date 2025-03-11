@@ -5,12 +5,19 @@ using UnityEngine;
 public class ForcedEncounter : MonoBehaviour
 {
     [SerializeField]
-    private Tunnel destination;
-    
+    private Transform destination;
 
-    public Tunnel GetDestination()
+    private void Start()
     {
-        return destination;
+        destination = GetComponentInChildren<Transform>();
+    }
+    public Vector3 GetWarpPos()
+    {
+        return transform.position;
+    }
+    public Vector3 GetDestination()
+    {
+        return destination.position;
     }
 
 }

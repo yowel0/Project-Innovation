@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip sprintStepSound;
     [SerializeField] AudioClip regainStaminaSound;
     [SerializeField] AudioClip noStaminaSound;
+    [SerializeField] AudioClip playerDeathSound;
 
     [Header("Orientation")]
     public Transform orientation;  // Transform used for orientation (typically the player's body)
@@ -71,6 +72,17 @@ public class PlayerMovement : MonoBehaviour
 
         DeathManager.OnDeath += PlayerDead;
         DeathManager.OnRespawn += Respawn;
+
+        if (staminaSoundSource == null && footStepSource == null)
+        {
+            Debug.Log("Please set the sound sources correctly");
+            AudioSource[] sources = GetComponents<AudioSource>();
+            if (sources.Length >= 2)
+            {
+                footStepSource = sources[0];
+                staminaSoundSource = sources[1];
+            }
+        }
     }
 
     private void Update()
@@ -149,9 +161,9 @@ public class PlayerMovement : MonoBehaviour
             PlayWalkSFX();  // Name is misleading
         }
 
-        if (isWalking)
+        if (isWalking && SoundLoudnessManager.GetManager() != null)
         {
-            //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+            SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
         }
 
         // Calculate the new position based on the move direction and speed
@@ -185,7 +197,10 @@ public class PlayerMovement : MonoBehaviour
             if (isWalking)
             {
                 footStepSource.Play();
-                //SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+                if (SoundLoudnessManager.GetManager() != null)
+                {
+                    SoundLoudnessManager.GetManager().CheckLoudness(footStepSource.clip.name);
+                }
             }
             else
             {
@@ -246,6 +261,9 @@ public class PlayerMovement : MonoBehaviour
     void PlayerDead()
     {
         isDead = true;
+        isWalking = false;
+        PlayWalkSFX();
+        staminaSoundSource.PlayOneShot(playerDeathSound);
     }
 
     void Respawn()

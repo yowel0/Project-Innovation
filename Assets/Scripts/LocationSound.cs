@@ -8,7 +8,7 @@ public class LocationSound : MonoBehaviour
     public UnityEvent OnMonsterEnter;
 
 
-    [SerializeField] AudioClip monsterEnter;
+    //[SerializeField] AudioClip monsterEnter;
 
 
     private void OnTriggerEnter(Collider other)

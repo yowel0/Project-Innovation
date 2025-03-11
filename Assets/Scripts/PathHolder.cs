@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserPathHolder : MonoBehaviour
+public class PathHolder : MonoBehaviour
 {
     [Header("These are set automatically")]
     [SerializeField]
@@ -32,6 +32,14 @@ public class LaserPathHolder : MonoBehaviour
     {
         currentPointIndex++;
         currentPointIndex %= numberOfPoints;
+        return pointLocations[currentPointIndex];
+    }
+    public Transform GetRandomPoint()
+    {
+        // Avoiding getting the same location twice
+        int nextPoint = Random.Range(0, numberOfPoints - 1);
+        if (nextPoint == currentPointIndex) nextPoint++;
+        currentPointIndex = nextPoint;
         return pointLocations[currentPointIndex];
     }
 }
