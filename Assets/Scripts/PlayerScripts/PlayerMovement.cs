@@ -128,11 +128,11 @@ public class PlayerMovement : MonoBehaviour
                 SetFootstepSound(sprintStepSound);
                 currentStamina -= staminaConsumption;
                 moveSpeed = sprintSpeed;
-                if (currentStamina <= 0) canSprint = false;
+                if (currentStamina <= 0) DisableSprint();
             }
             else
             {
-                if (currentStamina <= disableSprintStaminaThreshold) canSprint = false;
+                if (currentStamina <= disableSprintStaminaThreshold) DisableSprint();
                 RegainStamina();
             }
         }
@@ -146,6 +146,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    void DisableSprint()
+    {
+        canSprint = false;
+        if (staminaSoundSource != null && regainStaminaSound != null) staminaSoundSource.PlayOneShot(regainStaminaSound);
+    }
     void RegainStamina()
     {
         SetFootstepSound(walkStepSound);
