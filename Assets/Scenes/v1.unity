@@ -555,6 +555,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88264311795919103, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0000002384186
+      objectReference: {fileID: 0}
     - target: {fileID: 5550774039504177624, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -616,6 +620,10 @@ PrefabInstance:
       propertyPath: staminaText
       value: 
       objectReference: {fileID: 293980114}
+    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
+      propertyPath: sprintStepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 18742bda04e582e40abbc95b33e84f17, type: 3}
     - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: playerDeathSound
       value: 
@@ -923,6 +931,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 88378923402839830, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.396
+      objectReference: {fileID: 0}
     - target: {fileID: 1572321555901875941, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: pathHolder
       value: 
@@ -933,11 +945,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1714659678104773748, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.621
       objectReference: {fileID: 0}
     - target: {fileID: 1714659678104773748, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2
+      value: 2.246
       objectReference: {fileID: 0}
     - target: {fileID: 1714659678104773748, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_LocalRotation.w
@@ -967,9 +979,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3000989527351950406, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476690325533479001, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476690325533479001, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: soundData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: soundData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 80864a37d49a9ef4aa6ee5b328a9981e, type: 2}
     - target: {fileID: 7861735732427271502, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_Name
       value: HearingMonster
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861735732427271502, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_TagString
+      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
