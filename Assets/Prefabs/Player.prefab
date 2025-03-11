@@ -469,13 +469,15 @@ MonoBehaviour:
   maxStamina: 100
   staminaConsumption: 0.75
   staminaRegeneration: 1
+  disableSprintStaminaThreshold: 10
+  enableSprintStaminaThreshold: 50
   staminaText: {fileID: 0}
   footStepSource: {fileID: 6153752021556161705}
   staminaSoundSource: {fileID: 2373935861148885584}
   walkStepSound: {fileID: 8300000, guid: 8dce04e4dd3ce7a4abeb5b0aa4bf282e, type: 3}
   sprintStepSound: {fileID: 8300000, guid: d2524b612479a084eb7328237c7f4feb, type: 3}
   regainStaminaSound: {fileID: 0}
-  noStaminaSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
   orientation: {fileID: 3185131267772324451}
 --- !u!114 &461027768920058011
 MonoBehaviour:

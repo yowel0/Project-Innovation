@@ -879,6 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathMessage: You died to a laser
+  deathSound: {fileID: 0}
 --- !u!54 &353871492
 Rigidbody:
   m_ObjectHideFlags: 0
