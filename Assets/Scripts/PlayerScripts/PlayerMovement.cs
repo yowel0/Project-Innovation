@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxStamina;
     [SerializeField] float staminaConsumption;
     [SerializeField] float staminaRegeneration;
+    [Range(0f, 100f)]
+    [SerializeField] float disableSprintStaminaThreshold;
+    [Range(0f, 100f)]
+    [SerializeField] float enableSprintStaminaThreshold;
     [SerializeField] TextMeshProUGUI staminaText;
 
     [Header("Sounds")]
@@ -25,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip walkStepSound;
     [SerializeField] AudioClip sprintStepSound;
     [SerializeField] AudioClip regainStaminaSound;
-    [SerializeField] AudioClip noStaminaSound;
     [SerializeField] AudioClip playerDeathSound;
 
     [Header("Orientation")]
@@ -41,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 respawnPos;
     float storedMoveSpeed;
     bool isWalking;
+    bool canSprint = true;
     bool isDead;
 
     public static PlayerMovement GetPlayer()
@@ -104,44 +108,53 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");  // Get horizontal input (left/right keys or A/D keys)
         verticalInput = Input.GetAxisRaw("Vertical");      // Get vertical input (up/down keys or W/S keys)
 
+        SprintFunctions();
+    }
+
+    private void SprintFunctions()
+    {
         moveSpeed = storedMoveSpeed;
-
-        // Sprinting
-        if (Input.GetKey(sprintKey))
-        {
-            SetFootstepSound(sprintStepSound);
-            if (currentStamina - staminaConsumption >= 0)
-            {
-                // Consuming stamina
-                moveSpeed = sprintSpeed;
-                currentStamina -= staminaConsumption;
-            }
-
-            if (staminaText != null) staminaText.color = Color.red;
-            
+        if (staminaText != null) 
+        { 
+            if (currentStamina <= disableSprintStaminaThreshold) staminaText.color = Color.red;
+            else staminaText.color = Color.white;            
         }
-        else
+
+        if (canSprint)
         {
-            SetFootstepSound(walkStepSound);
-            currentStamina = Mathf.Min(currentStamina + staminaRegeneration, maxStamina);
-            if (currentStamina < maxStamina)
+            if (Input.GetKey(sprintKey))
             {
-                // Regaining stamina
-                if (staminaText != null) staminaText.color = Color.green;
-                
+                // Succesfully sprinting
+                SetFootstepSound(sprintStepSound);
+                currentStamina -= staminaConsumption;
+                moveSpeed = sprintSpeed;
+                if (currentStamina <= 0) canSprint = false;
             }
             else
             {
-                // Stamina is full
-                if (staminaText != null) staminaText.color = Color.white;
+                if (currentStamina <= disableSprintStaminaThreshold) canSprint = false;
+                RegainStamina();
             }
         }
-
-        if (staminaText != null)
+        else
         {
-            staminaText.text = "Stamina: " + (int)currentStamina;
+            RegainStamina();
+            if (staminaText != null) staminaText.color = Color.red;
         }
 
+        if (staminaText != null)staminaText.text = "Stamina: " + (int)currentStamina;
+
+    }
+
+    void RegainStamina()
+    {
+        SetFootstepSound(walkStepSound);
+        currentStamina = Mathf.Min(currentStamina + staminaRegeneration, maxStamina);
+        if (!canSprint && currentStamina >= enableSprintStaminaThreshold) canSprint = true;
+        if (currentStamina >= maxStamina)
+        {
+            if (staminaText != null) staminaText.color = Color.green;
+        }
     }
 
     private void MovePlayer()
