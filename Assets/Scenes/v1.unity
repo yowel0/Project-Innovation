@@ -616,6 +616,10 @@ PrefabInstance:
       propertyPath: staminaText
       value: 
       objectReference: {fileID: 293980114}
+    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
+      propertyPath: playerDeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2524b612479a084eb7328237c7f4feb, type: 3}
     - target: {fileID: 4787421472207980584, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.48
