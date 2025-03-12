@@ -10,7 +10,6 @@ public class WS_Client : MonoBehaviour
     public GameObject plane;
     public GameObject cubePrefab;
     public GameObject spherePrefab;
-    WebSocket ws;
     public WebSocket ws;
     private readonly ConcurrentQueue<Action> _actions = new ConcurrentQueue<Action>();
 
