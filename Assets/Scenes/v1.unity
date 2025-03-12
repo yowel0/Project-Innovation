@@ -2265,6 +2265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 765568725730441464, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2148622109391688101, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2.991
@@ -2272,6 +2276,18 @@ PrefabInstance:
     - target: {fileID: 2148622109391688101, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.z
       value: -12.954
+      objectReference: {fileID: 0}
+    - target: {fileID: 2609195446867522737, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091935001686289582, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4652760364972518705, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -19.05
       objectReference: {fileID: 0}
     - target: {fileID: 5550774039504177624, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2313,9 +2329,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6735710383208591620, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968366761441291717, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16
+      objectReference: {fileID: 0}
     - target: {fileID: 6999711576596993204, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.z
       value: -12.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 7712253295465174939, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7799384723376382181, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_Name
@@ -3350,10 +3378,6 @@ PrefabInstance:
     - target: {fileID: 7861735732427271502, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_Name
       value: HearingMonster
-      objectReference: {fileID: 0}
-    - target: {fileID: 7861735732427271502, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
-      propertyPath: m_TagString
-      value: Monster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

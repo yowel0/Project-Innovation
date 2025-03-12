@@ -14,7 +14,7 @@ public class VoiceManager : MonoBehaviour
     }
     void StopVoice()
     {
-        //client.StopCall();
+        client.SendWebSocketCommand("StopCall");
     }
 
     public static VoiceManager GetMainManager()
