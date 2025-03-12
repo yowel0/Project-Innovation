@@ -11,6 +11,7 @@ public class WS_Client : MonoBehaviour
     public GameObject cubePrefab;
     public GameObject spherePrefab;
     WebSocket ws;
+    public WebSocket ws;
     private readonly ConcurrentQueue<Action> _actions = new ConcurrentQueue<Action>();
 
     public static Action<Quaternion> GyroscopeChanged;
@@ -83,7 +84,15 @@ public class WS_Client : MonoBehaviour
         CodeEntered?.Invoke(codeINT);
     }
 
+<<<<<<< Updated upstream
     public void StartCall(int callID){
+=======
+    public void SendWebSocketCommand(string _command){
+        ws.Send("command:" + _command);
+    }
+
+    void StartCall(int callID){
+>>>>>>> Stashed changes
         ws.Send("phonecall:" + callID);
     }
 
