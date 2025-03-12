@@ -2371,13 +2371,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1239086387}
     - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
+      propertyPath: walkStepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c381dcd247732a746b7d5e62740b5909, type: 3}
+    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: sprintStepSound
       value: 
-      objectReference: {fileID: 8300000, guid: d2524b612479a084eb7328237c7f4feb, type: 3}
+      objectReference: {fileID: 8300000, guid: 4aa2e991e9bbd2f47b8650c35a552ad7, type: 3}
     - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: playerDeathSound
       value: 
-      objectReference: {fileID: 8300000, guid: d2524b612479a084eb7328237c7f4feb, type: 3}
+      objectReference: {fileID: 8300000, guid: 05cefc94512774749839377eb0953204, type: 3}
+    - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
+      propertyPath: regainStaminaSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7def07ec7318f43498980e36a3236701, type: 3}
     - target: {fileID: 1920566618459436645, guid: c52c4964a67eecd43a5bfc01a1567572, type: 3}
       propertyPath: staminaConsumption
       value: 0.4
@@ -3291,6 +3299,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.396
       objectReference: {fileID: 0}
+    - target: {fileID: 1005906161310594602, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c3e2ff54d0b00c4ab5eb0018e37eb2f, type: 3}
+    - target: {fileID: 1005906161310594602, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7632060193a3b2845b92b2779ec74fb1, type: 3}
     - target: {fileID: 1572321555901875941, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: pathHolder
       value: 
@@ -3355,6 +3371,14 @@ PrefabInstance:
       propertyPath: m_BaseOffset
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 3661309170807437359, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: sounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 214b814d004c93848ab5b50081155b7c, type: 3}
+    - target: {fileID: 3661309170807437359, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: sounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9558a2050fd90344d931c07088e119a8, type: 3}
     - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: soundSlider
       value: 
