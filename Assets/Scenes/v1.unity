@@ -704,7 +704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c34caed07615740a00d7fef90c5029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebugMessages: 1
+  ShowDebugMessages: 0
   historyDepth: 20
   decibelHistory: []
 --- !u!4 &639374179
@@ -2164,6 +2164,10 @@ PrefabInstance:
     - target: {fileID: 6480061165790021584, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 14.999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735710383208591620, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6787007291811122001, guid: 1aa1915e9ed7bb64893f44bef85be33b, type: 3}
       propertyPath: m_LocalPosition.z
