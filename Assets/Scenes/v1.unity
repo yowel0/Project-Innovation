@@ -357,7 +357,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1188722497}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 30
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -675,6 +675,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4092129179170984324, guid: 51c7a73671ff2b6438979ba0af5654fe, type: 3}
   m_PrefabInstance: {fileID: 1170572841}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &639374177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 639374179}
+  - component: {fileID: 639374178}
+  m_Layer: 0
+  m_Name: MicrophoneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &639374178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639374177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c34caed07615740a00d7fef90c5029, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebugMessages: 1
+  historyDepth: 20
+  decibelHistory: []
+--- !u!4 &639374179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639374177}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &642193779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3427,6 +3474,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3084089425806426197, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084089425806426197, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3476690325533479001, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_Speed
       value: 2
@@ -3434,6 +3489,14 @@ PrefabInstance:
     - target: {fileID: 3476690325533479001, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: m_BaseOffset
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: soundSlider
+      value: 
+      objectReference: {fileID: 195780452}
+    - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
+      propertyPath: volumeDecreaseRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000939880654398652, guid: c52d6f4ec68bf1f42b1924441751cc98, type: 3}
       propertyPath: soundData.Array.size
@@ -3749,3 +3812,6 @@ SceneRoots:
   - {fileID: 798240271}
   - {fileID: 642193779}
   - {fileID: 1596112262}
+  - {fileID: 639374179}
+  - {fileID: 4336471500123417107}
+  - {fileID: 259403218}

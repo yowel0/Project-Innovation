@@ -5,16 +5,21 @@ using UnityEngine.UI;
 
 public class SoundLoudnessManager : MonoBehaviour
 {
+    [SerializeField]
+    private float volumeDecreaseRate;
+    [SerializeField] 
+    private float currentVolume;
 
+    [Header("Add in editor")]
     [SerializeField]
     private SoundLoudness[] soundData;
-
 
     [SerializeField]
     private HearingMonster monster;
 
     [SerializeField]
     private Slider soundSlider;
+
 
     public void CheckLoudness(AudioClip clip)
     {
@@ -57,6 +62,10 @@ public class SoundLoudnessManager : MonoBehaviour
 
     private void CheckMonsterDistance(float soundRange)
     {
+        if (soundRange > currentVolume)
+        {
+            currentVolume = soundRange;
+        }
         Vector3 playerPos = PlayerMovement.GetPlayer().transform.position;
 
         float monsterDistance = Vector3.Distance(monster.transform.position, playerPos);
@@ -74,6 +83,12 @@ public class SoundLoudnessManager : MonoBehaviour
         {
             //Debug.Log("Distance is too big, not approaching player");
         }
+    }
+
+    private void FixedUpdate()
+    {
+        currentVolume = Mathf.Max(currentVolume - volumeDecreaseRate, 0);
+        if (soundSlider != null) soundSlider.value = currentVolume;
     }
 
     public static SoundLoudnessManager GetManager()
