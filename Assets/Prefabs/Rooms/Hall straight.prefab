@@ -117,6 +117,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8336167033365590620, guid: f70c9cfccfa942842b5390c10ea2f6a5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 956377332908891617}
+    - targetCorrespondingSourceObject: {fileID: 8336167033365590620, guid: f70c9cfccfa942842b5390c10ea2f6a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6780707919133495540}
+    - targetCorrespondingSourceObject: {fileID: 8336167033365590620, guid: f70c9cfccfa942842b5390c10ea2f6a5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 660850222779335447}
   m_SourcePrefab: {fileID: 100100000, guid: f70c9cfccfa942842b5390c10ea2f6a5, type: 3}
 --- !u!1 &6432542741843045351 stripped
 GameObject:
@@ -146,6 +152,50 @@ MeshCollider:
   m_CookingOptions: 30
   m_Mesh: {fileID: 7629811779324647873, guid: d8f296cc836fc474cbe22ea4751dda10, type: 3}
 --- !u!64 &956377332908891617
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432542741843045351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7629811779324647873, guid: d8f296cc836fc474cbe22ea4751dda10, type: 3}
+--- !u!64 &6780707919133495540
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432542741843045351}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7629811779324647873, guid: d8f296cc836fc474cbe22ea4751dda10, type: 3}
+--- !u!64 &660850222779335447
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
