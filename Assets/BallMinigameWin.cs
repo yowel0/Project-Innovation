@@ -23,8 +23,10 @@ public class BallMinigameWin : MonoBehaviour
         ballMinigame.FinishMinigame();
     }
 
-    void OnTriggerStay2D(){
-        print("triggerstay");
-        Finish();
+    void OnTriggerStay2D(Collider2D collider){
+        if (collider.CompareTag("Player")){
+            print("triggerstay");
+            Finish();
+        }
     }
 }
