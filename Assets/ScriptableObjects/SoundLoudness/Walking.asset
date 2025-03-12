@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Walking
   m_EditorClassIdentifier: 
   sound: {fileID: 8300000, guid: 8dce04e4dd3ce7a4abeb5b0aa4bf282e, type: 3}
-  radius: 5
+  radius: 3
