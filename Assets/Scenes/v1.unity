@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5c34caed07615740a00d7fef90c5029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowDebugMessages: 1
+  ShowDebugMessages: 0
   historyDepth: 20
   decibelHistory: []
 --- !u!4 &639374179
