@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 100f)]
     [SerializeField] float enableSprintStaminaThreshold;
     [SerializeField] TextMeshProUGUI staminaText;
+    [SerializeField] Slider staminaSlider;
 
     [Header("Sounds")]
     [SerializeField] AudioSource footStepSource;
@@ -141,6 +143,9 @@ public class PlayerMovement : MonoBehaviour
             RegainStamina();
             if (staminaText != null) staminaText.color = Color.red;
         }
+
+
+        if (staminaSlider != null) staminaSlider.value = currentStamina;
 
         if (staminaText != null)staminaText.text = "Stamina: " + (int)currentStamina;
 

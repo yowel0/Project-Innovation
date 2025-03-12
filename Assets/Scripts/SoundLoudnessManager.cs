@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoundLoudnessManager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class SoundLoudnessManager : MonoBehaviour
     [SerializeField]
     private HearingMonster monster;
 
-
+    [SerializeField]
+    private Slider soundSlider;
 
     public void CheckLoudness(AudioClip clip)
     {
@@ -46,6 +48,12 @@ public class SoundLoudnessManager : MonoBehaviour
 
         CheckMonsterDistance(range);
     }
+
+    public void CheckLoudnessMicrophone(float decibells)
+    {
+        // Something something convert decibells to a different range, then CheckMonsterDistance
+    }
+
 
     private void CheckMonsterDistance(float soundRange)
     {
