@@ -5,7 +5,7 @@ public class InteractionScript : MonoBehaviour
 {
     public KeyCode interactionKey;
     public float interactRange = 2f; // How far the player can interact from
-    public RawImage interactionIcon; // Reference to the UI RawImage (e.g., PNG texture)
+    public Image interactionIcon; // Reference to the UI RawImage (e.g., PNG texture)
 
     [SerializeField]
     AudioClip interactionSound;
@@ -42,7 +42,9 @@ public class InteractionScript : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, interactRange, ~(1 << holdLayerNr)))
         {
-            if (hit.transform.gameObject.tag == "canBeInteractedWith")
+            //if (hit.transform.gameObject.tag == "canBeInteractedWith")
+            if (hit.transform.GetComponent<Interactable>() != null || 
+                hit.transform.parent != null && hit.transform.parent.GetComponent<Interactable>() != null)
             {
                 // Hover logic continues
                 if (!isHovering) // Only activate if we weren't hovering before
