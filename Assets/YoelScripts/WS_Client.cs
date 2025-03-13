@@ -85,10 +85,12 @@ public class WS_Client : MonoBehaviour
 
 
     public void SendWebSocketCommand(string _command){
+        if (!ws.IsAlive) return;
         ws.Send("command:" + _command);
     }
 
     public void StartCall(int callID){
+        if (!ws.IsAlive) return;
         ws.Send("phonecall:" + callID);
     }
 
