@@ -157,9 +157,41 @@ PrefabInstance:
       value: Keypad
       objectReference: {fileID: 0}
     - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
       propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 2110898213042205012}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 1823772229354440193}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: ToggleOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 9210222731148113993, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+      propertyPath: OnCorrectCode.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -168,5 +200,10 @@ PrefabInstance:
 --- !u!4 &1126902140698888753 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4564625755196394910, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
+  m_PrefabInstance: {fileID: 3529486709645936559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2110898213042205012 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3292179482756757243, guid: 948b21e47268071438167b8ef2ed1e16, type: 3}
   m_PrefabInstance: {fileID: 3529486709645936559}
   m_PrefabAsset: {fileID: 0}
