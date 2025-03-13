@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9956edfdc8e0b6c4da54dab8e0d4888d, type: 3}
   m_Name: Sprinting
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 4aa2e991e9bbd2f47b8650c35a552ad7, type: 3}
+  sound: {fileID: 8300000, guid: 6e75d5a9c7fd7aa4db47b152889223ed, type: 3}
   radius: 20
