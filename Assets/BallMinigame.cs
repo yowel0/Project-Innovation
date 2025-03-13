@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class BallMinigame : MonoBehaviour
@@ -11,6 +12,10 @@ public class BallMinigame : MonoBehaviour
     Material[] materials;
     bool started = false;
     bool finished = false;
+    [SerializeField]
+    UnityEvent OnStart;
+    [SerializeField]
+    UnityEvent OnFinish;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +29,7 @@ public class BallMinigame : MonoBehaviour
     }
 
     public void StartMinigame(){
+        OnStart?.Invoke();
         if (!started){
             SetMaterial(1);
             started = true;
@@ -32,6 +38,7 @@ public class BallMinigame : MonoBehaviour
     }
 
     public void FinishMinigame(){
+        OnFinish?.Invoke();
         if (started && !finished){
             SetMaterial(2);
             finished = true;
