@@ -7,6 +7,11 @@ public class InteractionScript : MonoBehaviour
     public float interactRange = 2f; // How far the player can interact from
     public RawImage interactionIcon; // Reference to the UI RawImage (e.g., PNG texture)
 
+    [SerializeField]
+    AudioClip interactionSound;
+    [SerializeField]
+    AudioSource interactionSource;
+
     private int holdLayerNr;
     private bool isHovering = false; // To track hover state
 
@@ -17,6 +22,7 @@ public class InteractionScript : MonoBehaviour
         {
             interactionIcon.enabled = false; // Hide interaction icon initially
         }
+        if (interactionSource == null) interactionSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -118,6 +124,9 @@ public class InteractionScript : MonoBehaviour
             Debug.LogWarning("Hit object lacks Interactable component");
             return;
         }
+
+        // Play interaction sound
+        interactionSource.PlayOneShot(interactionSound);
 
         interactable.OnInteract?.Invoke();
         //Debug.Log($"Interacted with object: {interactable.gameObject.name} at position {interactable.transform.position}");
