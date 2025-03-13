@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip sprintStepSound;
     [SerializeField] AudioClip regainStaminaSound;
     [SerializeField] AudioClip playerDeathSound;
+    [SerializeField] AudioClip notifDeathSound;
 
     [Header("Orientation")]
     public Transform orientation;  // Transform used for orientation (typically the player's body)
@@ -287,6 +288,7 @@ public class PlayerMovement : MonoBehaviour
         isWalking = false;
         PlayWalkSFX();
         staminaSoundSource.PlayOneShot(playerDeathSound);
+        footStepSource.PlayOneShot(notifDeathSound);
     }
 
     void Respawn()
