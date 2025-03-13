@@ -10,7 +10,11 @@ public class Keypad : MonoBehaviour
     [SerializeField]
     int code;
     [SerializeField]
+    UnityEvent OnTryCode;
+    [SerializeField]
     UnityEvent OnCorrectCode;
+    [SerializeField]
+    UnityEvent OnIncorrectCode;
     void OnTriggerEnter(Collider other)
     {
         WS_Client.CodeEntered += TryCode;
@@ -24,12 +28,14 @@ public class Keypad : MonoBehaviour
     }
 
     void TryCode(int _code){
+        OnTryCode?.Invoke();
         if (_code == code){
             print("Correct Code");
             OnCorrectCode?.Invoke();
         }
         else{
             print("wrong code");
+            OnIncorrectCode?.Invoke();
         }
     }
     // Start is called before the first frame update
