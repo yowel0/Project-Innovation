@@ -13,6 +13,8 @@ public class KeyCardReader : MonoBehaviour
     UnityEvent OnCorrectCode;
     [SerializeField]
     UnityEvent OnWrongCode;
+    [SerializeField]
+    UnityEvent SwipeFail;
     void OnTriggerEnter(Collider other)
     {
         WS_Client.CardScanned += TryCard;
