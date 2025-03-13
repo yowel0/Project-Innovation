@@ -519,6 +519,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Keycard
       objectReference: {fileID: 0}
+    - target: {fileID: 4127019155424958537, guid: 91dd6b3c879c80e42a0232ae2f43a816, type: 3}
+      propertyPath: m_Size.y
+      value: 5.95438
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127019155424958537, guid: 91dd6b3c879c80e42a0232ae2f43a816, type: 3}
+      propertyPath: m_Center.y
+      value: 2.4771898
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
