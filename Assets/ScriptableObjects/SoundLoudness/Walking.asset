@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9956edfdc8e0b6c4da54dab8e0d4888d, type: 3}
   m_Name: Walking
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 8dce04e4dd3ce7a4abeb5b0aa4bf282e, type: 3}
-  radius: 3
+  sound: {fileID: 8300000, guid: c381dcd247732a746b7d5e62740b5909, type: 3}
+  radius: 7

@@ -6,21 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/YoelTestScene.unity
-    guid: 4e7ff1b8c05e1bc4da1495c20fb67d0e
-  - enabled: 1
-    path: Assets/Scenes/2D Minigame.unity
-    guid: 9f6d260320aa2614c84ba36c2b49f1f2
-  - enabled: 1
     path: Assets/Scenes/Start and end screen/StartScreen.unity
     guid: 393f6123c1a723c478594633a6c5543d
   - enabled: 1
-    path: Assets/Scenes/Scene.unity
-    guid: b7f91b4438290fc48b99140471e18ed2
+    path: Assets/Scenes/backup daph.unity
+    guid: 87f5a28f84ba2324b8498d06893b95a7
   - enabled: 1
     path: Assets/Scenes/Start and end screen/EndScreen.unity
     guid: 2dc6e6e7d18d7124a96a601bcb448b51
   - enabled: 1
+    path: Assets/Scenes/2D Minigame.unity
+    guid: 9f6d260320aa2614c84ba36c2b49f1f2
+  - enabled: 0
+    path: Assets/Scenes/Scene.unity
+    guid: b7f91b4438290fc48b99140471e18ed2
+  - enabled: 0
     path: Assets/Scenes/v1.unity
     guid: 1fea94617cd66d24ebc13a867658ef22
+  - enabled: 0
+    path: Assets/Scenes/YoelTestScene.unity
+    guid: 4e7ff1b8c05e1bc4da1495c20fb67d0e
   m_configObjects: {}
